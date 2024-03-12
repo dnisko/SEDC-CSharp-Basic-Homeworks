@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-
-namespace Task1
+﻿namespace Task1
 {
     internal class Program
     {
@@ -22,44 +19,72 @@ namespace Task1
         */
 
         #endregion
+
         static void Main(string[] args)
         {
-            //Console.WriteLine("Enter name for the dog");
-            //string name = Console.ReadLine();
+            /*
+            Console.WriteLine("Enter name for the dog");
+            string name = Console.ReadLine();
 
-            //Console.WriteLine("Enter breed for the dog");
-            //string breed = Console.ReadLine();
+            Console.WriteLine("Enter breed for the dog");
+            string breed = Console.ReadLine();
 
-            //Console.WriteLine("Enter color for the dog");
-            //string color = Console.ReadLine();
+            Console.WriteLine("Enter color for the dog");
+            string color = Console.ReadLine();
 
-            //Dog dog1 = new Dog(name, breed, color);
+            Dog dog1 = new Dog(name, breed, color);
 
-            //Console.WriteLine("Enter number from 1 to 3.");
-            //string option = Console.ReadLine();
-            //int option = GetOptionFromInput();
-
-
-            //switch (option)
-            //{
-            //    case 1: Console.WriteLine(dog1.Eat());
-            //        break;
-            //    case 2: Console.WriteLine(dog1.Play());
-            //        break;
-            //    case 3: Console.WriteLine(dog1.ChaseTail());
-            //        break;
-            //    default: Console.WriteLine("Wrong data entered");
-            //        break;
-            //}
-
-            Dog dog2 = new Dog(
-                GetStringInputFromConsole("Enter name for the dog"),
-                GetStringInputFromConsole("Enter breed for the dog"),
-                GetStringInputFromConsole("Enter color for the dog"));
-            
             Console.WriteLine("Enter number from 1 to 3.");
+            string option = Console.ReadLine();
             int option = GetOptionFromInput();
-            Console.WriteLine(GetDogAction(option, dog2));
+
+
+            switch (option)
+            {
+                case 1: Console.WriteLine(dog1.Eat());
+                    break;
+                case 2: Console.WriteLine(dog1.Play());
+                    break;
+                case 3: Console.WriteLine(dog1.ChaseTail());
+                    break;
+                default: Console.WriteLine("Wrong data entered");
+                    break;
+            }
+            */
+            while (true)
+            {
+                Dog dog2 = new Dog(
+                    GetStringInputFromConsole("Enter name for the dog"),
+                    GetStringInputFromConsole("Enter breed for the dog"),
+                    GetStringInputFromConsole("Enter color for the dog"));
+
+                Console.WriteLine("Enter number from 1 to 3.");
+                int option = GetOptionFromInput();
+                Console.WriteLine(GetDogAction(option, dog2));
+
+                Console.WriteLine("Do you want to enter another dog?");
+                string answer = Console.ReadLine();
+
+                bool isTrue = true;
+                while (true)
+                {
+                    //Continue(answer);
+                    switch (answer.ToLower())
+                    {
+                        case "y":
+                            //isTrue = false;
+                            break;
+                        case "n":
+                            return;
+                        default: 
+                            Console.WriteLine("Wrong input, enter y or n");
+                            break;
+                    }
+
+                    Console.WriteLine("Do you want to enter another dog?");
+                    answer = Console.ReadLine();
+                }
+            }
         }
 
         public static string GetStringInputFromConsole(string displayMessage)
