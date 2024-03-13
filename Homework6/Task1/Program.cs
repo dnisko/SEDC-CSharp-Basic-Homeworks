@@ -60,30 +60,56 @@
 
                 Console.WriteLine("Enter number from 1 to 3.");
                 int option = GetOptionFromInput();
+                string test = GetDogAction(option, dog2);
+
+                while (test == "Wrong data entered")
+                {
+                    Console.WriteLine(test);
+
+                    Console.WriteLine("Enter number from 1 to 3.");
+                    option = GetOptionFromInput();
+                    test = GetDogAction(option, dog2);
+                }
+
+
                 Console.WriteLine(GetDogAction(option, dog2));
 
-                Console.WriteLine("Do you want to enter another dog?");
+                Console.WriteLine("\nDo you want to enter another dog (enter: 'y' or 'n')?");
                 string answer = Console.ReadLine();
 
-                bool isTrue = true;
+                while (answer != "y" && answer != "n")
+                {
+                    Console.WriteLine("Wrong input, enter 'y' or 'n'");
+
+                    Console.WriteLine("\nDo you want to enter another dog (enter: 'y' or 'n')?");
+                    answer = Console.ReadLine().ToLower();
+                }
+
+                if (answer == "n")
+                {
+                    Console.WriteLine("Goodbye");
+                    return;
+                }
+
+                /* couldn't get it to work with switch...
                 while (true)
                 {
                     //Continue(answer);
                     switch (answer.ToLower())
                     {
                         case "y":
-                            //isTrue = false;
                             break;
                         case "n":
                             return;
-                        default: 
+                        default:
                             Console.WriteLine("Wrong input, enter y or n");
                             break;
                     }
 
-                    Console.WriteLine("Do you want to enter another dog?");
+                    Console.WriteLine("\nDo you want to enter another dog (enter: 'y' or 'n')?"");
                     answer = Console.ReadLine();
                 }
+                */
             }
         }
 
