@@ -41,13 +41,13 @@ namespace Task1
             while (tryAgain.ToLower() != "x")
             {
                 Console.WriteLine("Enter number for stats:");
-                double number;
+                decimal number;
                 //string input = Console.ReadLine();
                 while (true)
                 {
                     //the !double.TryParse(Console.ReadLine(), out number) - always returns integer... ex. input: 25.5, number = 255....
                     //found this snippet somewhere on the net :)
-                    if (!double.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out number))
+                    if (!decimal.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out number))
                     {
                         Console.WriteLine("Please enter a number.");
                         continue;
@@ -93,7 +93,7 @@ namespace Task1
             }
 
             result += input[0] == '-' ? "Negative\n" : "Positive\n";
-            result += decimal.Parse(input) % 2 == 0 ? "Even\n" : "Odd\n";
+            result += Math.Ceiling(decimal.Parse(input)) % 2 == 0 ? "Even\n" : "Odd\n";
 
             return result;
         }
