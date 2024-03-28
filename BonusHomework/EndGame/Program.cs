@@ -128,9 +128,15 @@ namespace EndGame
             {
                 Console.WriteLine("Enter email to login:");
                 email = Console.ReadLine();
-
+                if (!email.Contains('@') && !email.Contains('.'))
+                {
+                    Console.WriteLine("Enter valid email.");
+                    tries++;
+                    continue;
+                }
                 Console.WriteLine("Enter password:");
                 password = Console.ReadLine();
+                
 
                 currentPlayer = game.Login(email, password);
 
